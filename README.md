@@ -1,5 +1,5 @@
 # MSP-Face Corpus: A Natural Audiovisual Emotional Database
-This is the implementation of multimodalities baseline models for the [paper](https://ecs.utdallas.edu/research/researchlabs/msp-lab/publications/Vidal_2020.pdf). We provide the trained baseline models for users to reproduce results in the paper. 
+This is the implementation of multimodalities baseline models for the [paper](https://ecs.utdallas.edu/research/researchlabs/msp-lab/publications/Vidal_2020.pdf). We provide the trained baseline models for users to reproduce results in the paper. MSP-Face is an natural audio-visual database. It is a collection of online videos, where people talk in front of the camera different kind of topics  with a diversity of emotions. We annotated the emotional content of this database. Thus, generating labeled and unlabeled parts to perform experiments. The unlabeled part of this database contains a variety of emotions and it can be used for exploring unsupervised methods. In this repository, we share:
 
 # Suggested Environment and Requirements
 1. Python 3.6
