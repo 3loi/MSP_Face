@@ -4,7 +4,7 @@ MSP-Face is an natural audio-visual database. It is a collection of online video
 This is the implementation of multimodalities baseline models for the [paper](https://ecs.utdallas.edu/research/researchlabs/msp-lab/publications/Vidal_2020.pdf). We provide the trained baseline models for users to reproduce results in the paper.
 In this repository, we share:
 
-* Source code of baselines ('codes' folder)
+* Source code of baselines ('Audio_Modality','Visual_Modality', and 'AudioVisual_Modality' folders)
 * Links to the online videos ('Link' folder)
 * Code for getting the video segments (```download_segment_videos.py```)
 * Emotional labels obtaining by crowd-sourcing annotation ('Labels' folder)
@@ -15,7 +15,7 @@ In this repository, we share:
 ## Download MSP-Face
 For downloading the videos and generating the video segments, we provide the code ```download_segment_videos.py```. The requirements for using this code are:
 - python 3.6
-- [pytube3](https://github.com/get-pytube/pytube3)
+- [pytube3](https://github.com/get-pytube/pytube3) 9.6.4
 - ffmpeg
 
 Installing pytube3:
