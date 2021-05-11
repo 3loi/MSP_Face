@@ -15,12 +15,12 @@ In this repository, we share:
 ## Download MSP-Face
 For downloading the videos and generating the video segments, we provide the code ```download_segment_videos.py```. The requirements for using this code are:
 - python 3.6
-- [pytube3](https://github.com/get-pytube/pytube3) 9.6.4
+- [pytube](https://github.com/pytube/pytube) 10.0.0
 - ffmpeg
 
 Installing pytube3:
 ```
-pip install pytube3 --upgrade
+python -m pip install pytube
 ```
 
 Using ```download_segment_videos.py```
