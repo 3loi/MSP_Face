@@ -1,4 +1,3 @@
-test
 # MSP-Face Database
 MSP-Face is an natural audio-visual database. It is a collection of online videos, where people talk in front of the camera different kind of topics  with a diversity of emotions. We annotated the emotional content of this database. Thus, generating labeled and unlabeled parts to perform experiments. The unlabeled part of this database contains a variety of emotions and it can be used for exploring unsupervised methods. 
 
@@ -40,17 +39,11 @@ where
 3. keras version 2.2.4
 4. tensorflow version 1.14.0
 5. CUDA 10.0
-6. The IS13ComParE HLDs (6373-dim acoustic features for audio modality) extracted by OpenSmile, users can download from the [official website](https://www.audeering.com/opensmile/).
-
+6. The IS13ComParE HLDs (6373-dim acoustic features for audio modality) extracted by OpenSmile, users can download from the [official website](https://www.audeering.com/opensmile/). The [official website](https://audeering.github.io/opensmile/about.html#capabilities) also provides detail documentation of how to extract acoustic features based on the input audio files. We use default configurations of the **IS13_ComParE.conf** feature set as the input feature of our baseline models. 
 
 
 ### Audio Modality
 For the audio only model, we put codes and trained baseline models in the *Audio_Modality* folder. The trained models are in the *Models* folder, users can directly run the **testing.py** file with corresponding parameter settings to reproduce prediction results in the paper. If users want to re-train the model from scratch by setting different parameters, different model architectures or any customize experiments, we also provide our full training procedure in the **training.py** file for your reference.
-
-### Visual Modality
-
-
-
 
 Runing args for the **training.py** and **testing.py** file are:
    * -root: your data root directory
