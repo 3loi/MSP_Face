@@ -18,7 +18,7 @@ Once the videos have been downloaded, we follow a two step process to prepare th
 * -root: directory used to extract the segments and download the videos
 
 
-One the data has been pre-processed and we have trained our VGG models (click here)[https://github.com/3loi/MSP_Face/tree/master/Visual_Modality/VGG_Model] we can start training our LSTM model. Before that please make sure the config file (config_file.py) is configured correctly.
+One the data has been pre-processed and we have trained our VGG models [click here](https://github.com/3loi/MSP_Face/tree/master/Visual_Modality/VGG_Model) we can start training our LSTM model. Before that please make sure the config file (config_file.py) is configured correctly.
 
 3. Extract the latext feature from VGG model (uses config_file.py) on the MSP_Face Dataset
   ```
