@@ -42,11 +42,36 @@ where
 5. CUDA 10.0
 6. The IS13ComParE HLDs (6373-dim acoustic features for audio modality) extracted by OpenSmile, users can download from the [official website](https://www.audeering.com/opensmile/).
 
+
+
 ### Audio Modality
 For the audio only model, we put codes and trained baseline models in the *Audio_Modality* folder. The trained models are in the *Models* folder, users can directly run the **testing.py** file with corresponding parameter settings to reproduce prediction results in the paper. If users want to re-train the model from scratch by setting different parameters, different model architectures or any customize experiments, we also provide our full training procedure in the **training.py** file for your reference.
 
 ### Visual Modality
 
+
+
+
+Runing args for the **training.py** and **testing.py** file are:
+   * -root: your data root directory
+   * -ep: number of epochs
+   * -batch: batch size for training
+   * -emo: emotion label type ('attr' or 'class')
+   * -nodes: number of nodes for Dense layers
+   * -nc: number of classes for emotional classification task ('5-class' or '8-class') 
+   * run in the terminal
+
+```
+python training.py -root YOUR_ROOT -ep 200 -batch 256 -emo attr -nodes 256
+```
+or
+```
+python training.py -root YOUR_ROOT -ep 200 -batch 256 -emo class -nodes 256 -nc 5-class
+```
+For runing the testing results, just change training.py into testing.py to get prediction performances based on the MSP-Face test set with correpsonding model args. 
+
+
+# Vidual Modality
 
 
 ### Audio-visual Modality
@@ -61,6 +86,25 @@ We put audio-visual related codes and trained models under the *AudioVisual_Moda
 | **Val-CCC** | 0.2924 | 0.2677 | 0.3453 |
 | **Dom-CCC** | 0.3390 | 0.2085 | 0.3430 |
 
+
+Runing args for the **fusion_model_train.py** and **fusion_model_test.py** file are:
+   * -ep: number of epochs
+   * -batch: batch size for training
+   * -emo: emotion label type ('attr' or 'class')
+   * -nodes: number of nodes for Dense layers
+   * -nc: number of classes for emotional classification task ('5-class' or '8-class') 
+   * run in the terminal
+
+```
+python fusion_model_train.py -ep 50 -batch 256 -emo attr -nodes 256
+```
+or
+```
+python fusion_model_train.py -ep 50 -batch 256 -emo class -nodes 256 -nc 5-class
+```
+For runing the testing results, just change fusion_model_train.py into fusion_model_test.py to get fusion performances based on the MSP-Face test set with correpsonding model args. 
+
+
 #### Classification results
 |  | Speech-only | Face-only | Audiovisual|
 | --- | --- | --- | --- |
@@ -68,6 +112,7 @@ We put audio-visual related codes and trained models under the *AudioVisual_Moda
 | **5 class F1-score (micro)** | 0.3599 | 0.3494 | 0.3641 |
 | **8 class F1-score (macro)** | 0.1629 | 0.1308 | 0.1690 |
 | **8 class F1-score (micro)** | 0.2637 | 0.3161 | 0.2710 |
+
 
 ## Reference
 If you use this code or the corpus, please cite the following paper:

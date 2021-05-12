@@ -9,6 +9,7 @@ from keras.callbacks import ModelCheckpoint
 import random
 from dataloader import DataGenerator
 from model import dense_network_MTL, dense_network_class
+import argparse
 # Ignore warnings & Fix random seed
 import warnings
 warnings.filterwarnings("ignore")
@@ -16,23 +17,25 @@ random.seed(999)
 random_seed=99
 
 
+argparse = argparse.ArgumentParser()
+argparse.add_argument("-root", "--root_dir", required=True)
+argparse.add_argument("-ep", "--epoch", required=True)
+argparse.add_argument("-batch", "--batch_size", required=True)
+argparse.add_argument("-emo", "--emo_type", required=True)
+argparse.add_argument("-nodes", "--num_nodes", required=True)
+argparse.add_argument("-nc", "--num_class")
+args = vars(argparse.parse_args())
 
 # Parameters
-batch_size = 256
-epochs = 200
-num_nodes = 256
-
-#label_type = 'attr'
-label_type = 'class'
-
-#num_class = None
-#num_class = '5-class'
-num_class = '8-class'
-
-
-
-# Paths Setting
-root_dir = '/media/winston/UTD-MSP/Speech_Datasets/MSP-Face/Features/OpenSmile_func_IS13ComParE/feat_mat/'
+root_dir = args['root_dir'] # e.g., XXX/Dataset/MSP-Face/Features/OpenSmile_func_IS13ComParE/feat_mat/
+batch_size = int(args['batch_size'])
+epochs = int(args['epoch'])
+num_nodes = int(args['num_nodes'])
+label_type = args['emo_type']
+try:
+    num_class = args['num_class']
+except:
+    pass
 
 params_train = {'batch_size': batch_size,
                 'label_type': label_type,

@@ -10,23 +10,29 @@ import os
 from keras import backend as K
 from model import dense_network_MTL, dense_network_class
 from sklearn.metrics import f1_score
+import argparse
 
+
+argparse = argparse.ArgumentParser()
+argparse.add_argument("-root", "--root_dir", required=True)
+argparse.add_argument("-ep", "--epoch", required=True)
+argparse.add_argument("-batch", "--batch_size", required=True)
+argparse.add_argument("-emo", "--emo_type", required=True)
+argparse.add_argument("-nodes", "--num_nodes", required=True)
+argparse.add_argument("-nc", "--num_class")
+args = vars(argparse.parse_args())
 
 # Parameters
-batch_size = 256
-epochs = 200
-num_nodes = 256
+root_dir = args['root_dir'] # e.g., XXX/Dataset/MSP-Face/Features/OpenSmile_func_IS13ComParE/feat_mat/
+batch_size = int(args['batch_size'])
+epochs = int(args['epoch'])
+num_nodes = int(args['num_nodes'])
+label_type = args['emo_type']
+try:
+    num_class = args['num_class']
+except:
+    pass
 
-label_type = 'attr'
-#label_type = 'class'
-
-num_class = None
-#num_class = '5-class'
-#num_class = '8-class'
-
-
-# Data/Label Dir
-root_dir = '/media/winston/UTD-MSP/Speech_Datasets/MSP-Face/Features/OpenSmile_func_IS13ComParE/feat_mat/'
 Feat_mean_All = loadmat('./NormTerm/feat_norm_means.mat')['normal_para']
 Feat_std_All = loadmat('./NormTerm/feat_norm_stds.mat')['normal_para']  
 Label_mean_act = loadmat('./NormTerm/act_norm_means.mat')['normal_para'][0][0]
@@ -117,7 +123,7 @@ elif label_type == 'class':
 #    
 #if not os.path.isdir('./Fusion_Features/8-class/Audios/'):
 #    os.makedirs('./Fusion_Features/8-class/Audios/')
-#    
+#
 ## generate hidden features
 #if label_type == 'attr':
 #    last_hidden_model = K.function([model.layers[0].input,K.learning_phase()],
@@ -136,4 +142,3 @@ elif label_type == 'class':
 #            savemat('./Fusion_Features/5-class/Audios/'+test_file_path[i].replace('.wav','.mat'), {'Feat':hidden_output[i]})
 #        elif num_class == '8-class':
 #            savemat('./Fusion_Features/8-class/Audios/'+test_file_path[i].replace('.wav','.mat'), {'Feat':hidden_output[i]})
-

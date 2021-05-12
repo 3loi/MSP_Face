@@ -11,6 +11,7 @@ from scipy.io import loadmat
 from sklearn.metrics import f1_score
 from utils import getPaths, cc_coef, evaluation_metrics
 from utils import softprob2class_5class, softprob2class_8class
+import argparse
 
 
 
@@ -38,17 +39,23 @@ def fusion_network_class(num_nodes, num_class):
 ###############################################################################
 
 
+argparse = argparse.ArgumentParser()
+argparse.add_argument("-ep", "--epoch", required=True)
+argparse.add_argument("-batch", "--batch_size", required=True)
+argparse.add_argument("-emo", "--emo_type", required=True)
+argparse.add_argument("-nodes", "--num_nodes", required=True)
+argparse.add_argument("-nc", "--num_class")
+args = vars(argparse.parse_args())
+
 # Parameters
-batch_size = 256
-num_nodes = 256
-epochs = 50
-
-label_type = 'attr'
-#label_type = 'class'
-
-num_class = None
-#num_class = '5-class'
-#num_class = '8-class'
+batch_size = int(args['batch_size'])
+epochs = int(args['epoch'])
+num_nodes = int(args['num_nodes'])
+label_type = args['emo_type']
+try:
+    num_class = args['num_class']
+except:
+    pass
 
 # Hidden Features Paths Setting
 if label_type == 'attr':
