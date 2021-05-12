@@ -1,9 +1,9 @@
 from os import path
 
 # define the paths to the images directory (AffectNet Corpus)
-IMAGES_PATH = "/media/a/storage/cropped_Annotated"
+IMAGES_PATH = "/storage/cropped_Annotated"
 
-# used when creating 
+# used when creating the dataset, user None for VAD 
 NUM_CLASSES = 8
 # NUM_CLASSES = 5
 # NUM_CLASSES = None
@@ -39,6 +39,6 @@ DATASET_MEAN = "output/affectnet_emo_mean_8class.json"
 
 # define the path to the output directory used for storing plots,
 # classification reports, etc.
-OUTPUT_PATH = "/home/a/Desktop/affectnet/"
+OUTPUT_PATH = "/home/user/Desktop/affectnet/"
 
 
