@@ -13,10 +13,11 @@ In this repository, we share:
 * Suggested partition of the labeled part of the database (train, test, and development sets) ('Doc' folder)
 
 ## Download MSP-Face
-For downloading the videos and generating the video segments, we provide the code ```download_segment_videos.py```. The requirements for using this code are:
+For downloading the videos, generating the video segments and getting the segments audio, we provide the code ```download_segment_videos.py```. The requirements for using this code are:
 - python 3.6
 - [pytube](https://github.com/pytube/pytube) 10.0.0
 - ffmpeg
+- [SoX](http://sox.sourceforge.net/Main/HomePage) 14.4.2
 
 Installing pytube:
 ```
