@@ -49,7 +49,7 @@ where
 
 **Step2:** After extracted features, use the **normalization.py** in the *Audio_Modality* folder to calculate z-normalization parameters (mean and std) based on the train set. These norm-parameters will be saved in a generated *NormTerm* folder.
 
-**Step3:** For building the audio only model, users can use the **training.py** in the *Audio_Modality* folder to train all the models by given desired parameters. The trained models and loss curves (.png) will be saved in a generated *Models* folder. After obtain the trained models, users can then run the **testing.py** file with corresponding parameter settings of the trained models to obtain prediction results based on the test set given my the corpus.
+**Step3:** For building the audio only model, users can use the **training.py** in the *Audio_Modality* folder to train all the models by given desired parameters. The trained models and loss curves (.png) will be saved in a generated *Models* folder. After obtain the trained models, users can then run the **testing.py** file with corresponding parameter settings of the trained models to obtain prediction results based on the test set given by the corpus.
 
 Runing args for the **training.py** and **testing.py** file are:
    * -root: your data root directory (i.e., the saved feature directory in the Step1)
