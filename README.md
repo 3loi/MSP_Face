@@ -40,20 +40,19 @@ where
 3. keras version 2.2.4
 4. tensorflow version 1.14.0
 5. CUDA 10.0
-6. The IS13ComParE HLDs (6373-dim acoustic features for audio modality) extracted by OpenSmile, users can download from the [official website](https://www.audeering.com/opensmile/).
+6. opensmile-2.3.0 (users can download from the [official website](https://www.audeering.com/opensmile/))
 
 
 
 ### Audio Modality
-For the audio only model, we put codes and trained baseline models in the *Audio_Modality* folder. The trained models are in the *Models* folder, users can directly run the **testing.py** file with corresponding parameter settings to reproduce prediction results in the paper. If users want to re-train the model from scratch by setting different parameters, different model architectures or any customize experiments, we also provide our full training procedure in the **training.py** file for your reference.
+**Step1:** We use the opensmile **IS13_ComParE.conf** feature set (apply with default configurations) for the acoustic feature extraction. The [official website](https://audeering.github.io/opensmile/about.html#capabilities) provides the detail documentation of how to extract acoustic features based on the input audio files. After feature extraction, each audio file will result in a 6373D vector representation, and then users need to save them into .mat file by the scipy.io package under whichever directory of your own local PC (i.e., YOUR_ROOT).
 
-### Visual Modality
+**Step2:** After extracted features, use the **normalization.py** in the *Audio_Modality* folder to calculate z-normalization parameters (mean and std) based on the train set. These norm-parameters will be saved in a generated *NormTerm* folder.
 
-
-
+**Step3:** For building the audio only model, users can use the **training.py** in the *Audio_Modality* folder to train all the models by given desired parameters. The trained models and loss curves (.png) will be saved in a generated *Models* folder. After obtain the trained models, users can then run the **testing.py** file with corresponding parameter settings of the trained models to obtain prediction results based on the test set given my the corpus.
 
 Runing args for the **training.py** and **testing.py** file are:
-   * -root: your data root directory
+   * -root: your data root directory (i.e., the saved feature directory in the Step1)
    * -ep: number of epochs
    * -batch: batch size for training
    * -emo: emotion label type ('attr' or 'class')
@@ -63,29 +62,27 @@ Runing args for the **training.py** and **testing.py** file are:
 
 ```
 python training.py -root YOUR_ROOT -ep 200 -batch 256 -emo attr -nodes 256
+python testing.py -root YOUR_ROOT -ep 200 -batch 256 -emo attr -nodes 256
 ```
 or
 ```
 python training.py -root YOUR_ROOT -ep 200 -batch 256 -emo class -nodes 256 -nc 5-class
+python testing.py -root YOUR_ROOT -ep 200 -batch 256 -emo class -nodes 256 -nc 5-class
 ```
-For runing the testing results, just change training.py into testing.py to get prediction performances based on the MSP-Face test set with correpsonding model args. 
+NOTE: In the **testing.py** file, we also provide codes for extracting intermediate hidden outputs for AudioVisual fusion model. They are commented at the ending portion of the file.
 
 
-# Vidual Modality
+
+### Vidual Modality
+
 
 
 ### Audio-visual Modality
-We put audio-visual related codes and trained models under the *AudioVisual_Modality* folder. The hidden output features from the audio only and visual only models are saved in the *Fusion_Features* folder. We upload the trained audio-visual hidden feature fusion models in the *Fusion_Models* folder. Users can reproduce the fusion results in the paper by runing **fusion_model_test.py** directly
+**Step1:** Use the trained audio models to extracted intermediate hidden outputs of all audios. Please refer to the ending portion (commented) of the **testing.py** file in the *Audio_Modality* folder. The extracted hidden embeddings will be saved in a generated *Fusion_Features/XXX/Audios* folder.
 
-### Results for regression and classification tasks
+**Step2:** After obtain the same intermediate hidden outputs from visual models (they are saved as pickle files, for more details please refer to *Visual_Modality* folder), use **parse_video_hidden.py** in the *AudioVisual_Modality* folder to parse features and save into .mat format. The extracted hidden embeddings will be saved in a generated *Fusion_Features/XXX/Videos* folder.
 
-#### Regression results
-|  | Speech-only | Face-only | Audiovisual|
-| --- | --- | --- | --- |
-| **Aro-CCC** | 0.3794 | 0.2065 | 0.3961 |
-| **Val-CCC** | 0.2924 | 0.2677 | 0.3453 |
-| **Dom-CCC** | 0.3390 | 0.2085 | 0.3430 |
-
+**Step3:** For building the audio-visual model users can use the **fusion_model_train.py** in the *AudioVisual_Modality* folder to train all the models by given desired parameters. And test the trained model's prediction results by running **fusion_model_test.py**. 
 
 Runing args for the **fusion_model_train.py** and **fusion_model_test.py** file are:
    * -ep: number of epochs
@@ -97,12 +94,24 @@ Runing args for the **fusion_model_train.py** and **fusion_model_test.py** file 
 
 ```
 python fusion_model_train.py -ep 50 -batch 256 -emo attr -nodes 256
+python fusion_model_test.py -ep 50 -batch 256 -emo attr -nodes 256
 ```
 or
 ```
 python fusion_model_train.py -ep 50 -batch 256 -emo class -nodes 256 -nc 5-class
+python fusion_model_test.py -ep 50 -batch 256 -emo class -nodes 256 -nc 5-class
 ```
-For runing the testing results, just change fusion_model_train.py into fusion_model_test.py to get fusion performances based on the MSP-Face test set with correpsonding model args. 
+
+
+
+### Results for regression and classification tasks
+
+#### Regression results
+|  | Speech-only | Face-only | Audiovisual|
+| --- | --- | --- | --- |
+| **Aro-CCC** | 0.3794 | 0.2065 | 0.3961 |
+| **Val-CCC** | 0.2924 | 0.2677 | 0.3453 |
+| **Dom-CCC** | 0.3390 | 0.2085 | 0.3430 |
 
 
 #### Classification results
