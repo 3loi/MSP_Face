@@ -30,7 +30,7 @@ download_segment_videos.py -l <linksFile> -s <segmentsFile> -p <saveDataPath>
 where
 - ```<linksFile>``` correspond to ```link_videos.txt```
 - ```<segmentsFile>``` correspond to ```segments_data.txt```
-- ```<saveDataPath>``` is the path where do you want to save the database files
+- ```<saveDataPath>``` is the path where you want to save the database files
 
 ## Baselines
 ### Suggested requirements
