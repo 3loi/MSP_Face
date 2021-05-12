@@ -1,7 +1,7 @@
 # Visual Modality
 
 
-## preparing the Data
+## Preparing the Data
 Once the videos have been downloaded, we follow a two step process to prepare the data.
 1. Extract frames from videos
   video2jpg.py extracts the frames from video.
