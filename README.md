@@ -18,7 +18,7 @@ For downloading the videos and generating the video segments, we provide the cod
 - [pytube](https://github.com/pytube/pytube) 10.0.0
 - ffmpeg
 
-Installing pytube3:
+Installing pytube:
 ```
 python -m pip install pytube
 ```
