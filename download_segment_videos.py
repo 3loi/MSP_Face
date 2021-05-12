@@ -41,7 +41,20 @@ def video_segmentation(orginal_video_name,segment_file,main_folder_path):
 			os.system("ffmpeg -loglevel panic -i %s -strict -2 -break_non_keyframes 1/0 -ss %s -t %s %s" %\
 				(video_input,str(ti),str(dt),segment_output))
 
-		else:
+			#Getting Audio
+			audio_path = os.path.join(segments_path,'Audio')
+			if not os.path.isdir(audio_path):
+				os.mkdir(audio_path)
+
+			os.system("ffmpeg -loglevel panic -i %s %s" % (segment_output,os.path.join(audio_path,file_segments_data['f2'][k].decode('utf-8')[:-4] + "O.wav")))
+
+			os.system("sox %s %s remix 1" % (os.path.join(audio_path,file_segments_data['f2'][k].decode('utf-8')[:-4] + "O.wav"),os.path.join(audio_path,file_segments_data['f2'][k].decode('utf-8')[:-4] + "S.wav")))
+
+			os.system("ffmpeg -loglevel panic -i %s -ac 1 -vn -acodec pcm_s16le -ar 16000 %s" % (os.path.join(audio_path,file_segments_data['f2'][k].decode('utf-8')[:-4] + "S.wav"),os.path.join(audio_path,file_segments_data['f2'][k].decode('utf-8')[:-4] + ".wav")))
+
+			os.remove(os.path.join(audio_path,file_segments_data['f2'][k].decode('utf-8')[:-4] + "O.wav"))
+			os.remove(os.path.join(audio_path,file_segments_data['f2'][k].decode('utf-8')[:-4] + "S.wav"))
+
 			if counter_enter_out == 1:
 				break;
 
@@ -119,4 +132,3 @@ def main(argv):
 if __name__ == "__main__":
 
 	main(sys.argv[1:]);
-
