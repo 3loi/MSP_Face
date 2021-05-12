@@ -24,7 +24,7 @@ Before moving to step 3 please make sure all the variables in the config files a
   python vgg_feature_extract.py
   ```
   
-4.Train the model and save the video representation as a pickle file (uses config_file.py)
+4. Train the model and save the video representation as a pickle file (uses config_file.py)
   ```
   python train_LSTM.py
   ```
