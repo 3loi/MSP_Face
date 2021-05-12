@@ -25,13 +25,12 @@ python -m pip install pytube
 
 Using ```download_segment_videos.py```
 ```
-download_segment_videos.py -l <linksFile> -s <segmentsFile> -d <downloadPathOriginalVideos> -p <segmentPathDownload>
+download_segment_videos.py -l <linksFile> -s <segmentsFile> -p <saveDataPath>
 ```
 where
 - ```<linksFile>``` correspond to ```link_videos.txt```
 - ```<segmentsFile>``` correspond to ```segments_data.txt```
-- ```<downloadPathOriginalVideos>``` is the path where do you want to save the original videos
-- ```<segmentPathDownload>``` is the path where do you want to save the video segments extrated from the original videos
+- ```<saveDataPath>``` is the path where do you want to save the database files
 
 ## Baselines
 ### Suggested requirements
