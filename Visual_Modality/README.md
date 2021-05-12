@@ -7,14 +7,16 @@ Once the videos have been downloaded, we follow a two step process to prepare th
   video2jpg.py extracts the frames from video.
   ```
   python jpg2face.py -root MSP_ROOT_DIR
-    * -root: root directory used to extract the segments and download the videos
   ```
+* -root: root directory used to extract the segments and download the videos
+  
 3. Extract faces from frames
   jpg2face.py extracts the largest face from each frame (if found).
   ```
   python jpg2face.py -root MSP_ROOT_DIR
-    * -root: root directory used to extract the segments and download the videos
   ```
+* -root: root directory used to extract the segments and download the videos
+
 
 
 
