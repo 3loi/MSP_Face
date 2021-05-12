@@ -74,7 +74,7 @@ NOTE: In the **testing.py** file, we also provide codes for extracting intermedi
 
 
 ### Visual Modality
-For image based emotion recognition we first train a static emotion classification model (VGG16) on AffectNet. Using the latent feature representations we train an LSTM on the MSP_Face dataset. Then, we use the LSTM output vector to represent the whole video for Audio-visual recognition. For step-by-step of how we trained our model [Click here](https://github.com/3loi/MSP_Face/tree/master/Visual_Modality)
+For image based emotion recognition we first train a static emotion classification model (VGG16) on AffectNet. Using the latent feature representations we train an LSTM on the MSP_Face dataset. Then, we use the LSTM output vector to represent the whole video for Audio-visual recognition. For step-by-step of how we trained our model [click here](https://github.com/3loi/MSP_Face/tree/master/Visual_Modality)
 
 
 ### Audio-visual Modality
