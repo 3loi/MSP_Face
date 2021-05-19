@@ -5,6 +5,7 @@ import pytube
 import shutil
 import numpy as np
 from pytube import YouTube
+from tqdm import tqdm
 
 def video_segmentation(orginal_video_name,segment_file,main_folder_path):
 
@@ -69,7 +70,7 @@ def download_videos(link_file,segment_file,main_folder,segments_path):
 	if file_links_data.shape == ():
 		file_links_data = np.atleast_1d(file_links_data)
 
-	for k in range(len(file_links_data['f1'])):
+	for k in tqdm(range(len(file_links_data['f1']))):
 		link = file_links_data['f1'][k].decode('utf-8');
 		print(link)
 
@@ -89,10 +90,12 @@ def download_videos(link_file,segment_file,main_folder,segments_path):
 			video_segmentation(file_links_data['f0'][k].decode('utf-8'),segment_file,main_folder_video)
 		
 		except KeyboardInterrupt:
-			  print("Good bye!")
-			  exit(0)		
+			print("Good bye!")
+			exit(0)		
 		except:
 			print("The video is not available. Continue with the next video.")
+
+
 
 def main(argv):
 
