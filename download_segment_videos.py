@@ -87,7 +87,10 @@ def download_videos(link_file,segment_file,main_folder,segments_path):
 
 			#Segmenting the video
 			video_segmentation(file_links_data['f0'][k].decode('utf-8'),segment_file,main_folder_video)
-				
+		
+		except KeyboardInterrupt:
+			  print("Good bye!")
+			  exit(0)		
 		except:
 			print("The video is not available. Continue with the next video.")
 
