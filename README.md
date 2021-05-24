@@ -15,7 +15,7 @@ In this repository, we share:
 ## Download MSP-Face
 For downloading the videos, generating the video segments and getting the segments audio, we provide the code ```download_segment_videos.py```. The requirements for using this code are:
 - python 3.6
-- [pytube](https://github.com/pytube/pytube) 10.0.0
+- [pytube](https://github.com/pytube/pytube)
 - ffmpeg
 - [SoX](http://sox.sourceforge.net/Main/HomePage) 14.4.2
 
