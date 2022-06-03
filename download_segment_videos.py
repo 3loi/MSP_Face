@@ -56,6 +56,7 @@ def video_segmentation(orginal_video_name,segment_file,main_folder_path):
 			os.remove(os.path.join(audio_path,file_segments_data['f2'][k].decode('utf-8')[:-4] + "O.wav"))
 			os.remove(os.path.join(audio_path,file_segments_data['f2'][k].decode('utf-8')[:-4] + "S.wav"))
 
+		else:
 			if counter_enter_out == 1:
 				break;
 
