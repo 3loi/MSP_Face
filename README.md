@@ -19,6 +19,7 @@ For downloading the videos, generating the video segments and getting the segmen
 - ffmpeg
 - [SoX](http://sox.sourceforge.net/Main/HomePage) 14.4.2
 
+
 Installing pytube:
 ```
 python -m pip install pytube
